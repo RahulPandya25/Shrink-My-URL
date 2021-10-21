@@ -11,6 +11,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/url")
+// TODO: restrict this
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UrlController {
 
     @Autowired

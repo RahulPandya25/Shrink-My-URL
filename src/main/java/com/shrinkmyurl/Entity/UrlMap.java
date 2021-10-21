@@ -6,15 +6,17 @@ public class UrlMap {
     @Id
     private String id;
 
-    private String shortUrl;
+    private String shortUrlKey;
     private String longUrl;
     private int accessCount;
+    private long timeToLive;
 
     public UrlMap() {}
 
-    public UrlMap(String shortUrl, String longUrl) {
-        this.shortUrl = shortUrl;
+    public UrlMap(String shortUrlKey, String longUrl, long timeToLive) {
+        this.shortUrlKey = shortUrlKey;
         this.longUrl = longUrl;
+        this.timeToLive = timeToLive;
         this.accessCount = 0;
     }
 
@@ -22,12 +24,12 @@ public class UrlMap {
         return id;
     }
 
-    public String getShortUrl() {
-        return shortUrl;
+    public String getShortUrlKey() {
+        return shortUrlKey;
     }
 
-    public void setShortUrl(String shortUrl) {
-        this.shortUrl = shortUrl;
+    public void setShortUrlKey(String shortUrlKey) {
+        this.shortUrlKey = shortUrlKey;
     }
 
     public String getLongUrl() {
@@ -36,6 +38,14 @@ public class UrlMap {
 
     public void setLongUrl(String longUrl) {
         this.longUrl = longUrl;
+    }
+
+    public long getTimeToLive() {
+        return timeToLive;
+    }
+
+    public void setTimeToLive(long timeToLive) {
+        this.timeToLive = timeToLive;
     }
 
     public int getAccessCount() {
@@ -49,10 +59,11 @@ public class UrlMap {
     @Override
     public String toString() {
         return "UrlMap{" +
-                "id=" + id +
-                ", shortUrl='" + shortUrl + '\'' +
+                "id='" + id + '\'' +
+                ", shortUrlKey='" + shortUrlKey + '\'' +
                 ", longUrl='" + longUrl + '\'' +
                 ", accessCount=" + accessCount +
+                ", timeToLive=" + timeToLive +
                 '}';
     }
 }

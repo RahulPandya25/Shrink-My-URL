@@ -10,11 +10,9 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "url-map", path = "url-map")
 public interface UrlMapRepository extends MongoRepository<UrlMap, String> {
 
-    public UrlMap findByShortUrl(String shortUrl);
-    public UrlMap findByLongUrl(String longUrl);
-    public boolean existsUrlMapByLongUrl(String longUrl);
-    public boolean existsUrlMapByShortUrl(String shortUrl);
-
-    public List<UrlMap> findAllByAccessCount(int count);
+    UrlMap findByShortUrlKey(String shortUrlKey);
+    UrlMap findByLongUrl(String longUrl);
+    boolean existsUrlMapByLongUrl(String longUrl);
+    boolean existsUrlMapByShortUrlKey(String shortUrlKey);
 
 }

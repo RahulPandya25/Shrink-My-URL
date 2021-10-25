@@ -30,10 +30,12 @@ public class UrlMapService {
         return map;
     }
 
-    public UrlMap findMapByShortUrlKey(String shortUrlKey) {
+    public UrlMap findMapByShortUrlKey(String shortUrlKey, boolean fetchStats) {
         if (repository.existsUrlMapByShortUrlKey(shortUrlKey)) {
             UrlMap map = repository.findByShortUrlKey(shortUrlKey);
-            map.setAccessCount(map.getAccessCount() + 1);
+            if (!fetchStats) {
+                map.setAccessCount(map.getAccessCount() + 1);
+            }
             return repository.save(map);
         } else {
             return null;

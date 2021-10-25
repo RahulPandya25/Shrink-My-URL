@@ -18,9 +18,9 @@ public class UrlController {
     @Autowired
     private UrlMapService service;
 
-    @GetMapping("/{shortUrlKey}")
-    private ResponseEntity accessThisUrl(@PathVariable String shortUrlKey) {
-        UrlMap map = service.findMapByShortUrlKey(shortUrlKey);
+    @GetMapping("/{shortUrlKey}/{fetchStats}")
+    private ResponseEntity accessThisUrl(@PathVariable String shortUrlKey, @PathVariable boolean fetchStats) {
+        UrlMap map = service.findMapByShortUrlKey(shortUrlKey, fetchStats);
         if (map != null) {
             return ResponseEntity.ok().body(map);
         } else {

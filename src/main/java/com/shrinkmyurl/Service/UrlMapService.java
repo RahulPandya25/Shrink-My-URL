@@ -42,6 +42,17 @@ public class UrlMapService {
         }
     }
 
+    public UrlMap findMapBykey(String urlKey, boolean isShortUrlKey) {
+        UrlMap map;
+        if (isShortUrlKey) {
+            String key = urlKey.substring(urlKey.lastIndexOf('/') + 1, urlKey.length());
+            map = repository.existsUrlMapByShortUrlKey(key) ? repository.findByShortUrlKey(key) : null;
+        } else {
+            map = repository.existsUrlMapByLongUrl(urlKey) ? repository.findByLongUrl(urlKey) : null;
+        }
+        return map;
+    }
+
     ////////////////////
 
     public List<UrlMap> getAllMaps() {

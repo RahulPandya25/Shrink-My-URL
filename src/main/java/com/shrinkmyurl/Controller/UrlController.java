@@ -1,5 +1,6 @@
 package com.shrinkmyurl.Controller;
 
+import com.shrinkmyurl.Entity.FetchUrlDTO;
 import com.shrinkmyurl.Entity.UrlMap;
 import com.shrinkmyurl.Entity.UrlMapDTO;
 import com.shrinkmyurl.Service.UrlMapService;
@@ -21,6 +22,16 @@ public class UrlController {
     @GetMapping("/{shortUrlKey}/{fetchStats}")
     private ResponseEntity accessThisUrl(@PathVariable String shortUrlKey, @PathVariable boolean fetchStats) {
         UrlMap map = service.findMapByShortUrlKey(shortUrlKey, fetchStats);
+        if (map != null) {
+            return ResponseEntity.ok().body(map);
+        } else {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @PostMapping("/fetch")
+    private ResponseEntity fetchMapUsingKey(@RequestBody FetchUrlDTO urlDTO) {
+        UrlMap map = service.findMapBykey(urlDTO.getUrlKey(), urlDTO.isShortUrlKey());
         if (map != null) {
             return ResponseEntity.ok().body(map);
         } else {

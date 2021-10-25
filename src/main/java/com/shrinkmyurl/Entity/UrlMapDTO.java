@@ -2,9 +2,9 @@ package com.shrinkmyurl.Entity;
 
 public class UrlMapDTO {
     private String longUrl;
-    private long timeToLive;
+    private int timeToLive;
 
-    public UrlMapDTO(String longUrl, long timeToLive) {
+    public UrlMapDTO(String longUrl, int timeToLive) {
         this.longUrl = longUrl;
         this.timeToLive = timeToLive;
     }
@@ -17,11 +17,11 @@ public class UrlMapDTO {
         this.longUrl = longUrl;
     }
 
-    public long getTimeToLive() {
+    public int getTimeToLive() {
         return timeToLive;
     }
 
-    public void setTimeToLive(long timeToLive) {
+    public void setTimeToLive(int timeToLive) {
         this.timeToLive = timeToLive;
     }
 

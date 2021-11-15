@@ -12,7 +12,7 @@
 	<artifactId>shrink-my-url</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>shrink-my-url</name>
-	<description>App for shortening URL </description>
+	<description>App for shortening URL</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
